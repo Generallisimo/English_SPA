@@ -15,7 +15,7 @@ module.exports = {
       height: {
         'block': '600px',
         'img_1': '500px',
-        'test': '4000px'
+        'test': '10000px'
       },
       spacing: {
         '450px': '450px',

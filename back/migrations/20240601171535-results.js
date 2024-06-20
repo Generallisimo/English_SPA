@@ -15,17 +15,25 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.createTable('forms',{
-    id: { type: 'int', primaryKey: true, autoIncrement: true },
-    name: 'string',
-    social: 'string',
-    email: {type:'string', notNull: true, unique:true},
-    phone: 'string'
+  return db.createTable('results', {
+    id: {type:'int', primaryKey: true, autoIncrement: true},
+    email: {type:'string', 
+      foreignKey: {
+        name: 'results_forms_fk',
+        table: 'forms',
+        rules: {
+          onDelete: 'CASCADE',
+          onUpdate: 'RESTRICT'
+        },
+        mapping: 'email'
+      }
+    },
+    correct_sum: 'string'
   });
 };
 
 exports.down = function(db) {
-  return db.dropTable('forms');
+  return null;
 };
 
 exports._meta = {
